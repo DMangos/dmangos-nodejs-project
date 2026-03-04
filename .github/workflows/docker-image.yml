@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4 
     - name: connect to docker hub
-      run:  echo REGISTRY_PASS | docker login --username REGISTRY_USER    --password-stdin 
+      run:  echo $REGISTRY_PASS | docker login --username $REGISTRY_USER    --password-stdin 
  #   - name: Build the Docker image
  #     run: |
  #       docker build . --file Dockerfile --tag my-image-name:v1
