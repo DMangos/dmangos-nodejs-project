@@ -22,7 +22,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.REGISTRY_USER }}/demo-nodejs-app-GitHub:v1
+        tags: ${{ secrets.REGISTRY_USER }}/demo-nodejs-app-gitbub:v1
         
   deploy:
     runs-on: ubuntu-latest
@@ -42,17 +42,17 @@ jobs:
           echo "${{ secrets.REGISTRY_PAT }}" | docker login -u ${{ secrets.REGISTRY_USER }} --password-stdin
           
           # 2. Pull the latest image
-          docker pull ${{ secrets.REGISTRY_USER }}/my-image-name:v1
+          docker pull ${{ secrets.REGISTRY_USER }}/demo-nodejs-app-gitbub:v1
           
           # 3. Stop and remove the old container if it exists
           docker stop my-nodejs-app || true
           docker rm my-nodejs-app || true
           
           # 4. Run the new container
-          # Adjust the -p (port) mapping to match your app (e.g., 80:20280)
+          # Adjust the -p (port) mapping to match your app (e.g., 3001:3001)
           docker run -d \
             --name my-nodejs-app \
-            -p 80:20280 \
+            -p 3001:3000 \
             -e APP_STATIC_DIR="/app/static" \
-            ${{ secrets.REGISTRY_USER }}/demo-python-app-GitHub:v1  
+            ${{ secrets.REGISTRY_USER }}/demo-nodejs-app-gitbub:v1  
       
