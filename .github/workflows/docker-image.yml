@@ -19,7 +19,9 @@ jobs:
       with:
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PAT }}
-    - name: Build the Docker image
-      run: |
-        docker build . --file Dockerfile --tag my-image-name:v1
-        docker push my-image-name:v1
+    - name: Build and push to Dockerhub
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: my-image-name:v1
