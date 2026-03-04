@@ -49,7 +49,7 @@ jobs:
           docker rm my-nodejs-app || true
           
           # 4. Run the new container
-          # Adjust the -p (port) mapping to match your app (e.g., 3001:3001)
+          # Adjust the -p (port) mapping to match your app (e.g., 3001:3000)
           docker run -d \
             --name my-nodejs-app \
             -p 3002:3000 \
