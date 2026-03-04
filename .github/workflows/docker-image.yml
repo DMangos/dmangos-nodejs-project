@@ -9,13 +9,16 @@ on:
 jobs:
 
   build:
-
+    env:
+      REGISTRY_PASS: ${{ secrets.REGISTRY_PASS }}
+      REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
     runs-on: ubuntu-latest
 
+
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4 
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile --tag my-image-name:v1
-        echo ${{ secrets.REGISTRY_PASS }} | docker login --username ${{ secrets.REGISTRY_USER }}   --password-stdin 
+        echo REGISTRY_PASS | docker login --username REGISTRY_USER    --password-stdin 
         docker push my-image-name:v1
