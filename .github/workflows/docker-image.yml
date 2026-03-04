@@ -24,4 +24,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: my-image-name:v1
+        tags: ${{ secrets.REGISTRY_USER }}/my-image-name:v1
