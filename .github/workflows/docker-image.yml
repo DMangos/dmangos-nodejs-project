@@ -52,7 +52,7 @@ jobs:
           # Adjust the -p (port) mapping to match your app (e.g., 3001:3001)
           docker run -d \
             --name my-nodejs-app \
-            -p 3001:3000 \
+            -p 3002:3000 \
             -e APP_STATIC_DIR="/app/static" \
             ${{ secrets.REGISTRY_USER }}/demo-nodejs-app-gitbub:v1  
       
