@@ -18,7 +18,7 @@ jobs:
       uses: docker/login-action@v3
       with:
           username: ${{ secrets.REGISTRY_USER }}
-          password: ${{ secrets.REGISTRY_PASS }}
+          password: ${{ secrets.REGISTRY_PAT }}
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile --tag my-image-name:v1
