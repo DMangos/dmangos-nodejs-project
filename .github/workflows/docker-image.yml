@@ -17,8 +17,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4 
+    - connect: 
+      run:         echo REGISTRY_PASS | docker login --username REGISTRY_USER    --password-stdin 
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile --tag my-image-name:v1
-        echo REGISTRY_PASS | docker login --username REGISTRY_USER    --password-stdin 
         docker push my-image-name:v1
