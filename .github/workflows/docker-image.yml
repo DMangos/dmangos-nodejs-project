@@ -36,7 +36,7 @@ jobs:
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PAT }}
      - name: Run Trivy scan
-       uses: aquasecurity/trivy-action@0.65.1
+       uses: aquasecurity/trivy-action@0.65.0
        with:
           image-ref: "${{ secrets.REGISTRY_USER }}/demo-nodejs-app-gitbub:v1"
           format: "sarif"
