@@ -54,7 +54,7 @@ jobs:
      
   deploy:
     runs-on: ubuntu-latest
-    needs:   build-and-push  # Ensures this only runs if the 'build' job passes
+    needs:   [ build-and-push, trivy-scan ]  # Ensures this only runs if the 'build' job passes
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
